@@ -1,0 +1,49 @@
+<!DOCTYPE html>  
+<html lang="zh-CN"> <!-- 将lang属性从en改为zh-CN -->  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>你好，再见</title> <!-- 可选：将title也改为中文 -->  
+</head>  
+<body>  
+  
+<script>  
+// JavaScript代码保持不变  
+function checkPassword() {  
+    var testV = 0;  
+    var maxAttempts = 3;  
+    var pass1;  
+  
+    while (testV < maxAttempts) {  
+        pass1 = prompt('请证明你是机器人:', '');  
+        if (pass1 === null) {  
+            window.location.href = 'https://www.baidu.com';  
+            break;  
+        }  
+  
+        if (pass1 === "从前有座山，山上有座庙") {  
+            alert('证明成功!');
+            window.location.href = '下载链接';
+            break;  
+        }  
+        if (pass1 === "召唤神龙") {  
+            alert('666');
+            window.location.href = '分享链接';
+            break;  
+        }  
+  
+        testV++;  
+        alert('密码错误!请重新输入:');  
+    }  
+  
+    if (testV === maxAttempts) {  
+        alert('密码尝试次数已达上限！');  
+        window.location.href = 'https://www.baidu.com';  
+    }  
+}  
+  
+checkPassword();  
+</script>  
+  
+</body>  
+</html>
