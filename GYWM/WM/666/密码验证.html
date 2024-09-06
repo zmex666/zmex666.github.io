@@ -3,7 +3,7 @@
 <head>  
     <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>验证</title> <!-- 可选：将title也改为中文 -->  
+    <title>坤之大</title> <!-- 可选：将title也改为中文 -->  
 </head>  
 <body>  
   
@@ -15,23 +15,23 @@ function checkPassword() {
     var pass1;  
   
     while (testV < maxAttempts) {  
-        pass1 = prompt('你相信光个屁吗！？', '');  
+        pass1 = prompt('你相信光吗？', '');  
         if (pass1 === null) {  
             window.location.href = 'https://www.baidu.com';  
             break;  
         }  
   
-        if (pass1 === "SB") {  
-            alert('666!');  
+        if (pass1 === "我相信你是SB") {  
+            alert('你这人有点实力！');  
             break;  
         }  
   
         testV++;  
-        alert('你个58');  
+        alert('你个王八');  
     }  
   
     if (testV === maxAttempts) {  
-        alert('你个58');  
+        alert('你个王八');  
         window.location.href = 'https://www.baidu.com';  
     }  
 }  
