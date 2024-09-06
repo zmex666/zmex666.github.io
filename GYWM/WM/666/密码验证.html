@@ -3,7 +3,7 @@
 <head>  
     <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>密码检查</title> <!-- 可选：将title也改为中文 -->  
+    <title>验证</title> <!-- 可选：将title也改为中文 -->  
 </head>  
 <body>  
   
@@ -15,13 +15,13 @@ function checkPassword() {
     var pass1;  
   
     while (testV < maxAttempts) {  
-        pass1 = prompt('请输入密码:', '');  
+        pass1 = prompt('你相信光个屁吗！？', '');  
         if (pass1 === null) {  
             window.location.href = 'https://www.baidu.com';  
             break;  
         }  
   
-        if (pass1 === "31415988666Q") {  
+        if (pass1 === "SB") {  
             alert('密码正确!');  
             break;  
         }  
