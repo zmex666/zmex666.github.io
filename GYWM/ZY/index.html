@@ -1,7 +1,8 @@
 <!DOCTYPE html>  
 <html lang="zh-CN"> <!-- 将lang属性从en改为zh-CN -->  
 <head>  
-    <meta charset="UTF-8">  
+    <meta charset="UTF-8">
+	<title>调试页</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
       </head>  
 <body>  
@@ -14,14 +15,14 @@ function checkPassword() {
     var pass1;  
   
     while (testV < maxAttempts) {  
-        pass1 = prompt('秦屎黄的坟什么颜色？', '');  
+        pass1 = prompt('请证明你是开发者', '');  
         if (pass1 === null) {  
             window.location.href = 'cai.html';  
             break;  
         }  
   
-        if (pass1 === "又绿又粉") {  
-            alert('嘿嘿');  
+        if (pass1 === "我是大圣") {  
+            alert('验证成功');  
             break;  
         }  
   
