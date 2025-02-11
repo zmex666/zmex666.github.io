@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
-    <title>Your RSS Feed Title</title>
-    <link>https://your-github.io/</link>
+    <title>追梦而行的小站RSS</title>
+    <link>https://zmex666.github.io/</link>
     <description>Your RSS Feed Description</description>
-    <language>en-us</language>
+    <language>zh-cn</language>
     <item>
       <title>Item 1 Title</title>
       <link>https://your-github.io/item1</link>
