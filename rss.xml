@@ -3,13 +3,13 @@
   <channel>
     <title>追梦而行的小站RSS</title>
     <link>https://zmex666.github.io/</link>
-    <description>Your RSS Feed Description</description>
+    <description>追梦而行的小站RSS</description>
     <language>zh-cn</language>
     <item>
-      <title>Item 1 Title</title>
-      <link>https://your-github.io/item1</link>
-      <description>Item 1 Description</description>
-      <pubDate>Mon, 01 Jan 2024 00:00:00 GMT</pubDate>
+      <title>新年快乐</title>
+      <link>https://zmex666.github.io/item1</link>
+      <description>2025年新年贺词</description>
+      <pubDate>Mon, 01 Jan 2025 00:00:00 GMT</pubDate>
     </item>
     <item>
       <title>Item 2 Title</title>
