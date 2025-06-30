@@ -4,9 +4,4 @@
 
 页面这在维护中，很多功能都不能用，敬请谅解
 
-如果想看网页请访问 [zmex666.github.io](https://zmex666.github.io "点击访问")
-
-文件夹📁名字是页面拼音首字母，如：
-GJ表示工具
-YX表示游戏
-WZ表示文章
+如果想看网页请访问 [zmex666.github.io](https://zmex666.github.io "点击访问")或[zmex666.pages.dev](https://zmex666.pages.dev "点击访问")
