@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>班级诏书 · 钦此</title>
+<style>
+  :root{
+    --paper: #f7efdc;
+    --ink: #33261a;
+    --ink-soft: #6b5640;
+    --gold: #a8781f;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html, body{ margin:0; padding:0; }
+
+  body{
+    min-height:100vh;
+    padding:56px 18px 80px;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    background-color:#221610;
+    background-image:
+      radial-gradient(ellipse at 50% -10%, #4a3324 0%, transparent 58%),
+      radial-gradient(ellipse at 50% 112%, #3a2718 0%, transparent 58%),
+      repeating-linear-gradient(45deg, rgba(255,255,255,.014) 0 2px, transparent 2px 7px);
+    font-family:"STKaiti","KaiTi","Kaiti SC","楷体","Songti SC","SimSun",serif;
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ============ 卷纸 ============ */
+  .paper{
+    position:relative;
+    width:100%;
+    max-width:880px;
+    padding:66px 74px 70px;
+    overflow:hidden;
+    border-radius:4px;
+    background-color:var(--paper);
+    background-image:
+      repeating-linear-gradient(90deg, rgba(180,150,100,.045) 0 1px, transparent 1px 5px),
+      radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.85), transparent 62%),
+      linear-gradient(180deg, #fbf5e6 0%, #f4e9cd 55%, #efe1c0 100%);
+    box-shadow:
+      0 0 0 1px #e2d2aa,
+      0 0 0 9px #f7efdc,
+      0 0 0 10px #cfb884,
+      0 34px 70px rgba(0,0,0,.62),
+      0 8px 22px rgba(0,0,0,.4),
+      inset 0 0 90px rgba(170,130,70,.16);
+    animation:paperIn .9s cubic-bezier(.2,.7,.3,1) both;
+  }
+
+  @keyframes paperIn{
+    from{ opacity:0; transform:translateY(26px) scale(.985); }
+    to{ opacity:1; transform:none; }
+  }
+
+  /* 内框线 */
+  .paper::before{
+    content:"";
+    position:absolute;
+    inset:15px;
+    border:1px solid rgba(150,110,50,.38);
+    outline:1px solid rgba(150,110,50,.18);
+    outline-offset:5px;
+    pointer-events:none;
+    z-index:2;
+  }
+
+  /* 背景水印大字 */
+  .paper::after{
+    content:"詔";
+    position:absolute;
+    top:50%; left:50%;
+    transform:translate(-50%,-50%);
+    font-size:clamp(280px, 62vw, 560px);
+    line-height:1;
+    color:rgba(150,110,50,.05);
+    pointer-events:none;
+    user-select:none;
+    z-index:0;
+  }
+
+  .inner{ position:relative; z-index:1; }
+
+  /* ============ 顶部装饰 ============ */
+  .top-ornament{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-bottom:26px;
+  }
+  .top-ornament .line{
+    flex:1;
+    height:1px;
+    background:linear-gradient(90deg, transparent, rgba(150,110,50,.65), transparent);
+  }
+  .top-ornament .gem{
+    color:#9c2b2b;
+    font-size:13px;
+    letter-spacing:.4em;
+    text-indent:.4em;
+    opacity:.85;
+  }
+
+  /* ============ 标题 ============ */
+  .title{
+    margin:0;
+    text-align:center;
+    font-size:clamp(34px, 6.4vw, 56px);
+    font-weight:400;
+    letter-spacing:.42em;
+    text-indent:.42em;
+    color:#2a1c10;
+    text-shadow:0 1px 0 rgba(255,255,255,.75), 0 2px 8px rgba(120,85,40,.18);
+  }
+
+  .title-sub{
+    margin:14px 0 0;
+    text-align:center;
+    font-size:14px;
+    letter-spacing:.55em;
+    text-indent:.55em;
+    color:#8a6f4b;
+  }
+
+  .title-rule{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    margin:30px 0 34px;
+  }
+  .title-rule .bar{
+    width:min(170px, 26%);
+    height:2px;
+    background:linear-gradient(90deg, transparent, #9c2b2b);
+    opacity:.55;
+  }
+  .title-rule .bar.r{ background:linear-gradient(90deg, #9c2b2b, transparent); }
+  .title-rule .dot{
+    width:7px; height:7px;
+    background:#9c2b2b;
+    transform:rotate(45deg);
+    opacity:.75;
+  }
+
+  /* ============ 开篇 ============ */
+  .opening p{
+    margin:0 0 18px;
+    font-size:17.5px;
+    line-height:2.15;
+    text-align:justify;
+    text-indent:2em;
+    color:#3a2b1c;
+  }
+  .opening p.lead{
+    text-indent:0;
+    font-size:19px;
+    letter-spacing:.1em;
+    color:#8b1a1a;
+  }
+  .opening p.mark{
+    text-indent:0;
+    text-align:center;
+    font-size:19px;
+    letter-spacing:.35em;
+    text-indent:.35em;
+    color:#8b1a1a;
+    margin:30px 0 10px;
+  }
+
+  /* ============ 章节 ============ */
+  .chapter{
+    margin-top:44px;
+    --accent:#8b1a1a;
+    --accent-soft:rgba(139,26,26,.07);
+  }
+  .c-imperial{ --accent:#8b1a1a; --accent-soft:rgba(139,26,26,.075); }
+  .c-cabinet { --accent:#a8781f; --accent-soft:rgba(168,120,31,.10); }
+  .c-inner   { --accent:#2f5d8a; --accent-soft:rgba(47,93,138,.085); }
+  .c-six     { --accent:#3f6b4a; --accent-soft:rgba(63,107,74,.085); }
+  .c-mil     { --accent:#8a4b2f; --accent-soft:rgba(138,75,47,.085); }
+
+  .chapter-title{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin:0 0 20px;
+    font-size:19px;
+    font-weight:400;
+    letter-spacing:.22em;
+    color:#3d2d1c;
+  }
+  .chapter-title .num{
+    flex:none;
+    display:grid;
+    place-items:center;
+    width:34px; height:34px;
+    background:var(--accent);
+    color:#f7efdc;
+    font-size:16px;
+    border-radius:2px;
+    box-shadow:0 3px 8px rgba(0,0,0,.22), inset 0 0 0 1px rgba(255,255,255,.22);
+  }
+  .chapter-title .txt{ flex:none; }
+  .chapter-title .rule{
+    flex:1;
+    height:1px;
+    background:linear-gradient(90deg, var(--accent), transparent);
+    opacity:.45;
+  }
+
+  /* ============ 条目 ============ */
+  .entries{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0,1fr));
+    gap:14px;
+  }
+
+  .entry{
+    position:relative;
+    padding:14px 18px 14px 20px;
+    border-left:3px solid var(--accent);
+    border-radius:2px;
+    background:linear-gradient(90deg, var(--accent-soft), rgba(255,255,255,.25) 75%, transparent);
+    box-shadow:inset 0 0 0 1px rgba(160,125,70,.16);
+    transition:transform .28s ease, box-shadow .28s ease, background .28s ease;
+  }
+  .entry:hover{
+    transform:translateY(-2px) translateX(3px);
+    box-shadow:
+      inset 0 0 0 1px rgba(160,125,70,.3),
+      0 8px 20px rgba(90,60,25,.18);
+    background:linear-gradient(90deg, var(--accent-soft), rgba(255,255,255,.5) 80%, transparent);
+  }
+
+  .entry-row{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+
+  .name{
+    font-size:22px;
+    letter-spacing:.12em;
+    color:#2b1d11;
+  }
+
+  .post{
+    font-size:13.5px;
+    letter-spacing:.12em;
+    color:var(--accent);
+    padding:2px 9px;
+    border:1px solid currentColor;
+    border-radius:2px;
+    background:rgba(255,255,255,.4);
+    white-space:nowrap;
+  }
+
+  .desc{
+    margin:8px 0 0;
+    font-size:13.5px;
+    line-height:1.7;
+    letter-spacing:.05em;
+    color:var(--ink-soft);
+  }
+
+  /* 平级标注 */
+  .level-note{
+    grid-column:1 / -1;
+    margin:6px 0 0;
+    text-align:center;
+    font-size:13px;
+    letter-spacing:.3em;
+    text-indent:.3em;
+    color:#9a845f;
+  }
+  .level-note::before,
+  .level-note::after{
+    content:"—";
+    margin:0 10px;
+    opacity:.6;
+  }
+
+  /* ============ 结尾 ============ */
+  .closing{
+    margin-top:52px;
+    padding-top:34px;
+    border-top:1px solid rgba(150,110,50,.3);
+  }
+  .closing p{
+    margin:0 0 16px;
+    font-size:17.5px;
+    line-height:2.15;
+    text-align:justify;
+    text-indent:2em;
+    color:#3a2b1c;
+  }
+
+  .signature{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:24px;
+    margin-top:34px;
+    flex-wrap:wrap;
+  }
+
+  .qin-ci{
+    margin:0;
+    font-size:26px;
+    letter-spacing:.4em;
+    text-indent:.4em;
+    color:#8b1a1a;
+  }
+
+  .seal{
+    flex:none;
+    width:94px;
+    height:94px;
+    display:grid;
+    place-items:center;
+    border:3px solid #a32020;
+    border-radius:4px;
+    color:#a32020;
+    font-size:30px;
+    line-height:1.02;
+    letter-spacing:2px;
+    writing-mode:vertical-rl;
+    text-orientation:upright;
+    transform:rotate(-7deg);
+    opacity:.86;
+    box-shadow:inset 0 0 0 2px rgba(163,32,32,.28);
+    background:radial-gradient(circle at 30% 25%, rgba(163,32,32,.09), transparent 70%);
+    mix-blend-mode:multiply;
+  }
+
+  /* ============ 响应式 ============ */
+  @media (max-width:760px){
+    body{ padding:26px 10px 44px; }
+    .paper{ padding:44px 26px 48px; box-shadow:0 0 0 1px #e2d2aa, 0 18px 40px rgba(0,0,0,.6), inset 0 0 70px rgba(170,130,70,.16); }
+    .paper::before{ inset:10px; outline-offset:3px; }
+    .entries{ grid-template-columns:1fr; }
+    .name{ font-size:20px; }
+    .opening p, .closing p{ font-size:16px; line-height:2; }
+    .seal{ width:78px; height:78px; font-size:25px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .paper{ animation:none; }
+    .entry{ transition:none; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="paper">
+    <div class="inner">
+
+      <!-- 顶部装饰 -->
+      <div class="top-ornament">
+        <span class="line"></span>
+        <span class="gem">◆ 奉 天 承 运 ◆</span>
+        <span class="line"></span>
+      </div>
+
+      <!-- 标题 -->
+      <h1 class="title">诏　书</h1>
+      <p class="title-sub">班 级 嘉 勉 令</p>
+
+      <div class="title-rule">
+        <span class="bar"></span>
+        <span class="dot"></span>
+        <span class="bar r"></span>
+      </div>
+
+      <!-- 开篇 -->
+      <div class="opening">
+        <p class="lead">诏曰：</p>
+        <p>今班级治学，格物致知，明理求真。观尔等学子，潜心钻研，勤于思索，成绩卓然，堪为表率。特颁此诏，嘉勉贤才，册封官职，以励勤学。</p>
+        <p class="mark">兹 特 封</p>
+      </div>
+
+      <!-- 一、宗室爵位 -->
+      <section class="chapter c-imperial">
+        <h2 class="chapter-title">
+          <span class="num">一</span>
+          <span class="txt">宗室爵位</span>
+          <span class="rule"></span>
+        </h2>
+        <div class="entries">
+          <article class="entry">
+            <div class="entry-row">
+              <span class="name">蒋腾毅</span>
+              <span class="post">摄政王</span>
+            </div>
+            <p class="desc">朝政最高掌权者，代掌皇权</p>
+          </article>
+          <article class="entry">
+            <div class="entry-row">
+              <span class="name">彭子轩</span>
+              <span class="post">镇国公</span>
+            </div>
+            <p class="desc">超品公爵，功臣最高爵位，位极人臣</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 二、中枢宰辅 -->
+      <section class="chapter c-cabinet">
+        <h2 class="chapter-title">
+          <span class="num">二</span>
+          <span class="txt">中枢宰辅</span>
+          <span class="rule"></span>
+        </h2>
+        <div class="entries">
+          <article class="entry">
+            <div class="entry-row">
+              <span class="name">任星佑</span>
+              <span class="post">左相</span>
+            </div>
+            <p class="desc">百官之首，主行政决策</p>
+          </article>
+          <article class="entry">
+            <div class="entry-row">
+              <span class="name">张瀚予</span>
+              <span class="post">右相</span>
+            </div>
+            <p class="desc">副相，协理朝政</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 三、内阁体系 -->
+      <section class="chapter c-inner">
+        <h2 class="chapter-title">
+          <span class="num">三</span>
+          <span class="txt">内阁体系</span>
+          <span class="rule"></span>
+        </h2>
+        <div class="entries">
+          <article class="entry">
+            <div class="entry-row">
+              <span class="name">江嘉悦</span>
+              <span class="post">内阁大学士</span>
+            </div>
+            <p class="desc">内阁核心，辅弼决策</p>
+          </article>
+          <article class="entry">
+            <div class="entry-row">
+              <span class="name">张泰立</span>
+              <span class="post">内阁侍读学士</span>
+            </div>
+            <p class="desc">副学士</p>
+          </article>
+          <article class="entry">
+            <div class="entry-row">
+              <span class="name">戴宸浠</span>
+              <span class="post">内阁中书</span>
+            </div>
+            <p class="desc">掌文书、起草诏令</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 四、六部体系 -->
+      <section class="chapter c-six">
+        <h2 class="chapter-title">
+          <span class="num">四</span>
+          <span class="txt">六部体系</span>
+          <span class="rule"></span>
+        </h2>
+        <div class="entries">
+          <article class="entry">
+            <div class="entry-row">
+              <span class="name">陈星蓓</span>
+              <span class="post">六部尚书</span>
+            </div>
+            <p class="desc">各部长官</p>
+          </article>
+          <article class="entry">
+            <div class="entry-row">
+              <span class="name">周思呈</span>
+              <span class="post">吏部尚书</span>
+            </div>
+          </article>
+          <article class="entry">
+            <div class="entry-row">
+              <span class="name">陈子浩</span>
+              <span class="post">户部尚书</span>
+            </div>
+          </article>
+          <article class="entry">
+            <div class="entry-row">
+              <span class="name">谭景元</span>
+              <span class="post">礼部尚书</span>
+            </div>
+          </article>
+          <article class="entry">
+            <div class="entry-row">
+              <span class="name">李悦然</span>
+              <span class="post">兵部尚书</span>
+            </div>
+          </article>
+          <article class="entry">
+            <div class="entry-row">
+              <span class="name">刘丁寔</span>
+              <span class="post">刑部尚书</span>
+            </div>
+          </article>
+          <article class="entry">
+            <div class="entry-row">
+              <span class="name">梁恩祺</span>
+              <span class="post">工部尚书</span>
+            </div>
+          </article>
+          <p class="level-note">平级</p>
+        </div>
+      </section>
+
+      <!-- 五、军事体系 -->
+      <section class="chapter c-mil">
+        <h2 class="chapter-title">
+          <span class="num">五</span>
+          <span class="txt">军事体系</span>
+          <span class="rule"></span>
+        </h2>
+        <div class="entries">
+          <article class="entry">
+            <div class="entry-row">
+              <span class="name">刘林轩</span>
+              <span class="post">大将军</span>
+            </div>
+            <p class="desc">全国最高军事统帅</p>
+          </article>
+          <article class="entry">
+            <div class="entry-row">
+              <span class="name">王子嘉</span>
+              <span class="post">骠骑将军</span>
+            </div>
+            <p class="desc">高级将领</p>
+          </article>
+          <article class="entry">
+            <div class="entry-row">
+              <span class="name">龙星豪</span>
+              <span class="post">卫将军</span>
+            </div>
+            <p class="desc">掌宫城禁军</p>
+          </article>
+          <article class="entry">
+            <div class="entry-row">
+              <span class="name">万祈希</span>
+              <span class="post">中郎将</span>
+            </div>
+            <p class="desc">统领精锐部队</p>
+          </article>
+          <article class="entry">
+            <div class="entry-row">
+              <span class="name">刘思姒</span>
+              <span class="post">校尉</span>
+            </div>
+            <p class="desc">统领各营</p>
+          </article>
+          <p class="level-note">平级</p>
+        </div>
+      </section>
+
+      <!-- 结尾 -->
+      <div class="closing">
+        <p>望诸爱卿精研物理，解惑答疑，引领同窗共探新知，互助共进，勤勉笃行，共兴班级好学之风。</p>
+        <p>布告天下，咸使闻知。</p>
+
+        <div class="signature">
+          <p class="qin-ci">钦此</p>
+          <div class="seal" aria-label="钤印">钦此</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
